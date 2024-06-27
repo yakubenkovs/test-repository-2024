@@ -9,3 +9,7 @@ function add() {
 function minus() {
     return 3 - 2;
 }
+
+function miltiply() {
+    return 2 * 3;
+}
