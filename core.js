@@ -13,3 +13,7 @@ function minus() {
 function miltiply() {
     return 2 * 3;
 }
+
+function divide() {
+    return 6 / 3;
+}
