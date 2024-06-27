@@ -5,3 +5,7 @@ function print() {
 function add() {
     return 2 + 3;
 }
+
+function miltiply() {
+    return 2 * 3;
+}
