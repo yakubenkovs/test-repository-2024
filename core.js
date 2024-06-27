@@ -5,3 +5,7 @@ function print() {
 function add() {
     return 2 + 3;
 }
+
+function minus() {
+    return 3 - 2;
+}
