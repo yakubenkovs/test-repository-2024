@@ -1,0 +1,20 @@
+{
+  "name": "lesson_03",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hw04": "node hw"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "My first repo",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "mocha": "^10.6.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.6.0"
+  }
+}
