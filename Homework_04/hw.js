@@ -1,3 +1,4 @@
+function hw_04() {
 const fse = require("fs-extra");
 
 const file = '/Homework_04/Folder_01/hw_04.txt';
@@ -21,3 +22,4 @@ fse.removeSync('/Homework_04/Folder_01')
 fse.removeSync('/Homework_04/Folder_02')
 
 fse.removeSync('/Homework_04/Folder_03')
+}

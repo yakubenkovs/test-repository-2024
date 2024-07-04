@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "hw4": "npm run hw.js"
+    "hw4": "npm run hw_04()"
   },
   "author": "",
   "license": "ISC",
