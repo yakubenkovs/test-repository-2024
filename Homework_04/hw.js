@@ -16,8 +16,8 @@ fse.ensureDirSync(dir3);
 
 fse.copySync('/Homework_04/Folder_02/hw_04.txt', '/Homework_04/Folder_03/hw_04.txt');
 
-fse.removeSync('/Homework_04/Folder_01')
+fse.removeSync('/Homework_04/Folder_01');
 
-fse.removeSync('/Homework_04/Folder_02')
+fse.removeSync('/Homework_04/Folder_02');
 
-fse.removeSync('/Homework_04/Folder_03')
+fse.removeSync('/Homework_04/Folder_03');
