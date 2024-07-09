@@ -11,10 +11,5 @@
   "description": "My first repo",
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "mocha": "^10.6.0",
-    "yargs": "^17.7.2"
-  },
-  "devDependencies": {
-    "eslint": "^9.6.0"
   }
 }
