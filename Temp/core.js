@@ -17,3 +17,5 @@ function miltiply() {
 function divide() {
     return 6 / 3;
 }
+
+console.log (global)
