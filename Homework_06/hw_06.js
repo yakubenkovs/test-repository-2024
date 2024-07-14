@@ -52,10 +52,14 @@ arrayForSort.sort((a,b) => a - b);
 arrayForSort.sort((a,b) => b - a);
 
 
-const arrayForDeleteRepeated = [35,6,7,8,2,8,7,26,35,27,5];
+const arrayForDeleteRepeated = [35,6,7,8,2,8,7,26,35,26,5];
 const uniqueArray = [];
 
 for (i = 0; i < arrayForDeleteRepeated.length; i++) {
-    uniqueArray.includes(arrayForDeleteRepeated[i]) ? arrayForDeleteRepeated.splice([i],1) : uniqueArray.push(arrayForDeleteRepeated[i]);
+    if (uniqueArray.includes(arrayForDeleteRepeated[i])) {
+        arrayForDeleteRepeated.splice([i],1)
+        i--
+    } else {
+        uniqueArray.push(arrayForDeleteRepeated[i]);
+    }
 }
-
