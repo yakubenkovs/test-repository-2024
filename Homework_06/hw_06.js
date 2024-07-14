@@ -57,7 +57,7 @@ const uniqueArray = [];
 
 for (i = 0; i < arrayForDeleteRepeated.length; i++) {
     if (uniqueArray.includes(arrayForDeleteRepeated[i])) {
-        arrayForDeleteRepeated.splice([i],1)
+        arrayForDeleteRepeated.splice([i],1);
         i--
     } else {
         uniqueArray.push(arrayForDeleteRepeated[i]);
