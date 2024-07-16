@@ -14,14 +14,19 @@ let maxArrayValue = arrayForMaxValue[0];
 
 let arrayForFibonacci = [7,8,9,10,11], arrayFibonacci = [0,1];
 
-const n = 5, m = 6;
+const n = 5, m = 7;
 
-for (i = 2; i < n + m - 1; i++) {
+for (let i = 2; i < n + m - 1; i++) {
     arrayFibonacci[i] = arrayFibonacci[i-1] + arrayFibonacci[i-2];
 }
 
-arrayForFibonacci.push(arrayFibonacci.slice(n - 1));
+arrayFibonacci = arrayFibonacci.reverse();
 
+arrayFibonacci.splice(arrayFibonacci.length-n+1,m);
+
+arrayFibonacci = arrayFibonacci.reverse();
+
+arrayForFibonacci.push(arrayFibonacci);
 
 let numberForComparison1 = 3487, numberForComparison2 = 3794, counterForValueAndPosition = 0, counterForValueOnly = 0;
 
@@ -31,8 +36,9 @@ numberForComparison2 = numberForComparison2.toString();
 numberForComparison1 = numberForComparison1.split('');
 numberForComparison2 = numberForComparison2.split('');
 
-for (i = 0; i < numberForComparison1.length; i++) {
-    for (k = 0; k < numberForComparison2.length; k++) {
+
+for (let i = 0; i < numberForComparison1.length; i++) {
+    for (let k = 0; k < numberForComparison2.length; k++) {
         if (i === k)
         {
             numberForComparison1[i] === numberForComparison2[k] ? counterForValueAndPosition++ : 0; 
@@ -55,7 +61,7 @@ arrayForSort.sort((a,b) => b - a);
 const arrayForDeleteRepeated = [35,6,7,8,2,8,7,26,35,26,5];
 const uniqueArray = [];
 
-for (i = 0; i < arrayForDeleteRepeated.length; i++) {
+for (let i = 0; i < arrayForDeleteRepeated.length; i++) {
     if (uniqueArray.includes(arrayForDeleteRepeated[i])) {
         arrayForDeleteRepeated.splice([i],1);
         i--
