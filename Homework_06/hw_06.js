@@ -14,13 +14,13 @@ let maxArrayValue = arrayForMaxValue[0];
 
 let arrayForFibonacci = [7,8,9,10,11], arrayFibonacci = [0,1];
 
-const n = 2, m = 5;
+const n = 5, m = 6;
 
-for (i = 2; i < m; i++) {
+for (i = 2; i < n + m - 1; i++) {
     arrayFibonacci[i] = arrayFibonacci[i-1] + arrayFibonacci[i-2];
 }
 
-arrayForFibonacci.splice(n-1,0,arrayFibonacci);
+arrayForFibonacci.push(arrayFibonacci.slice(n - 1));
 
 
 let numberForComparison1 = 3487, numberForComparison2 = 3794, counterForValueAndPosition = 0, counterForValueOnly = 0;
