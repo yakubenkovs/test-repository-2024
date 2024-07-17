@@ -11,11 +11,17 @@ console.log (Math.max (2, 4, 6, 737,735773,747,7377))
 
 console.log (Math.floor((Math.random ()*(100-1) + 1)))
 
-console.log (Math.floor(10.9))
+console.log (Math.trunc(10.9))
 
 console.log (Math.ceil(10.1))
 
 console.log (Math.round(10.5))
+
+console.log (Math.pow(2,3))
+
+console.log (Math.sqrt(9))
+
+console.log (Math.abs(-9))
 
 console.log (0 == false);
 
