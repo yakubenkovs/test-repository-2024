@@ -3,30 +3,31 @@ function rollTheDie(numberOfAttempts) {
     for (let i = 0; i < numberOfAttempts; i++) {
         let dieValue = Math.floor(Math.random() * (Math.floor(6) - Math.ceil(1) + 1) + Math.ceil(1));
         if(dieValue > dieValueMax){
-            dieValueMax = dieValue
+            dieValueMax = dieValue;
         }
     }
-    return dieValueMax
+    return dieValueMax;
 }
 
 let numberOfPlayers = 4;
+let numberOfAttempts = 2;
 let playerValues = [];
 let maxValueBetweenPlayers = 0;
 let counterOfWinners = 0;
 let winnerPosition = 0;
 
 for (let j = 0; j < numberOfPlayers; j ++) {
-    playerValues.push(rollTheDie(2));
+    playerValues.push(rollTheDie(numberOfAttempts));
 }
 
 for (let j = 0; j <numberOfPlayers; j ++) {
     if (playerValues[j] > maxValueBetweenPlayers)
     {
-        maxValueBetweenPlayers = playerValues[j]
+        maxValueBetweenPlayers = playerValues[j];
         counterOfWinners = 1;
         winnerPosition = j;
     }
-    else if (playerValues[j] = maxValueBetweenPlayers)
+    else if (playerValues[j] === maxValueBetweenPlayers)
     {
         counterOfWinners++;
     }
@@ -39,5 +40,5 @@ if (counterOfWinners === 1) {
     console.log(`Max value ${maxValueBetweenPlayers} from ${winnerPosition+1} player`);
 }
 else {
-    console.log(`Max value ${maxValueBetweenPlayers} but it's a draw`)
+    console.log(`Max value ${maxValueBetweenPlayers} but it's a draw`);
 }
