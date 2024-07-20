@@ -38,7 +38,6 @@ console.log(`Number of winners - ${counterOfWinners}`);
 if (counterOfWinners === 1) {
     console.log(`Max value ${maxValueBetweenPlayers} from ${winnerPosition+1} player`);
 }
-
 else {
     console.log(`Max value ${maxValueBetweenPlayers} but it's a draw`);
 }
