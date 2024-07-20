@@ -5,7 +5,6 @@ let maxValueBetweenPlayers = 0;
 let counterOfWinners = 0;
 let winnerPosition = 0;
 
-
 function rollTheDie(numberOfAttempts) {
     let dieValueMax = 0;
 
@@ -39,6 +38,7 @@ console.log(`Number of winners - ${counterOfWinners}`);
 if (counterOfWinners === 1) {
     console.log(`Max value ${maxValueBetweenPlayers} from ${winnerPosition+1} player`);
 }
+
 else {
     console.log(`Max value ${maxValueBetweenPlayers} but it's a draw`);
 }
