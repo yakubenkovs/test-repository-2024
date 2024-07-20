@@ -100,4 +100,4 @@ function calculateAmountOfFriday13th(dateStartValue) {
     return counterOfFriday13th;
 }
 
-console.log(`Amount of Fridays 13 from ${dateStartValue} until now is ${calculateAmountOfFriday13th(dateStartValue)}`);
+console.log(`Amount of Fridays 13th from ${dateStartValue} until now is ${calculateAmountOfFriday13th(dateStartValue)}`);
