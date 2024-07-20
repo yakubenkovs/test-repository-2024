@@ -36,3 +36,51 @@ if (counterOfWinners === 1) {
 else {
     console.log(`Max value ${maxValueBetweenPlayers} but it's a draw`);
 }
+
+
+let numberToSplit = 20, partsQuantity = 5;
+
+function splitTheNumberIntoIntValues(numberToSplit, partsQuantity) {
+    let partOfTheNumber = 0, counterOfThePartsValues = 0, minimumValueToRandom = 1, splittedNumber = numberToSplit;
+    const partsOfTheNumber = [];
+
+    for (let i = 0; i < partsQuantity; i++) {
+        
+        if (i === partsQuantity - 1) {
+            partsOfTheNumber.push(numberToSplit - counterOfThePartsValues);
+        } 
+        else {
+            partOfTheNumber = Math.floor(Math.random() * (Math.floor(splittedNumber - partsQuantity) - Math.ceil(minimumValueToRandom)) + Math.ceil(minimumValueToRandom));
+            splittedNumber -= partOfTheNumber;
+            partOfTheNumber <= 0 ? partOfTheNumber = 1 : 0;
+            partsOfTheNumber.push(partOfTheNumber);
+            counterOfThePartsValues += partOfTheNumber;
+        }
+    }
+
+    return partsOfTheNumber;
+}
+
+function splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity) {
+    let partOfTheNumber = 0, counterOfThePartsValues = 0, minimumValueToRandom = 0.01, splittedNumber = numberToSplit;
+    const partsOfTheNumber = [];
+
+    for (let i = 0; i < partsQuantity; i++) {
+        
+        if (i === partsQuantity - 1) {
+            partsOfTheNumber.push(+(numberToSplit - counterOfThePartsValues).toFixed(2));
+        } 
+        else {
+            partOfTheNumber = Number((Math.random() * ((splittedNumber - partsQuantity) - minimumValueToRandom) + minimumValueToRandom).toFixed(2));
+            splittedNumber -= partOfTheNumber;
+            partOfTheNumber <= 0 ? partOfTheNumber = 0.01 : 0;
+            partsOfTheNumber.push(partOfTheNumber);
+            counterOfThePartsValues += partOfTheNumber;
+        }
+    }
+
+    return partsOfTheNumber;
+}
+
+console.log (`Number ${numberToSplit} is splitted into ${partsQuantity} int parts as ${splitTheNumberIntoIntValues(numberToSplit, partsQuantity)}`);
+console.log (`Number ${numberToSplit} is splitted into ${partsQuantity} decimal parts as ${splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity)}`);
