@@ -45,7 +45,7 @@ function splitTheNumberIntoIntValues(numberToSplit, partsQuantity) {
     const partsOfTheNumber = [];
 
     for (let i = 0; i < partsQuantity; i++) {
-        
+
         if (i === partsQuantity - 1) {
             partsOfTheNumber.push(numberToSplit - counterOfThePartsValues);
         } 
@@ -66,7 +66,7 @@ function splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity) {
     const partsOfTheNumber = [];
 
     for (let i = 0; i < partsQuantity; i++) {
-        
+
         if (i === partsQuantity - 1) {
             partsOfTheNumber.push(+(numberToSplit - counterOfThePartsValues).toFixed(2));
         } 
@@ -84,3 +84,20 @@ function splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity) {
 
 console.log (`Number ${numberToSplit} is splitted into ${partsQuantity} int parts as ${splitTheNumberIntoIntValues(numberToSplit, partsQuantity)}`);
 console.log (`Number ${numberToSplit} is splitted into ${partsQuantity} decimal parts as ${splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity)}`);
+
+
+let dateStartValue = '2010-01-01';
+
+function calculateAmountOfFriday13th(dateStartValue) {
+    let dayOfTheWeek = 5, dateOfTheMonth = 13, counterOfFriday13th = 0;
+    let currentTimeInDays = Date.now() / 86400000;
+
+    for (let dateStartInDays = Date.parse(dateStartValue) / 86400000; dateStartInDays < currentTimeInDays-1; dateStartInDays++) {
+        dateStartObject = new Date(dateStartInDays * 86400000);
+        dateStartObject.getDay() === dayOfTheWeek && dateStartObject.getDate() === dateOfTheMonth ? counterOfFriday13th++ : 0;
+    }
+
+    return counterOfFriday13th;
+}
+
+console.log(`Amount of Fridays 13 from ${dateStartValue} until now is ${calculateAmountOfFriday13th(dateStartValue)}`);
