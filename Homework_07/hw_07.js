@@ -92,7 +92,7 @@ function calculateAmountOfFriday13th(dateStartValue) {
     let dayOfTheWeek = 5, dateOfTheMonth = 13, counterOfFriday13th = 0;
     let currentTimeInDays = Date.now() / 86400000;
 
-    for (let dateStartInDays = Date.parse(dateStartValue) / 86400000; dateStartInDays < currentTimeInDays-1; dateStartInDays++) {
+    for (let dateStartInDays = Date.parse(dateStartValue) / 86400000; dateStartInDays < currentTimeInDays - 1; dateStartInDays++) {
         dateStartObject = new Date(dateStartInDays * 86400000);
         dateStartObject.getDay() === dayOfTheWeek && dateStartObject.getDate() === dateOfTheMonth ? counterOfFriday13th++ : 0;
     }
