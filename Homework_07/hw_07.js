@@ -87,3 +87,19 @@ function pushElementsToArrayInSeveralPositions(arrayToUpdateSeveralValues, value
 }
 
 console.log(`Values ${valuesToSeveralInput} are inserted from the indexes ${placesToSeveralInputs} to the array ${arrayToUpdateSeveralValues} as ${pushElementsToArrayInSeveralPositions(arrayToUpdateSeveralValues,valuesToSeveralInput,placesToSeveralInputs)}`);
+
+
+let arrayForSorting = [3,4,1,5,85,60,7,30,50], methodOfSorting = 'ASC';
+
+function sortArray(arrayForSorting, methodOfSorting) {
+
+    if (methodOfSorting === 'ASC') {
+        arrayForSorting.sort((a,b) => a - b);
+    } else if (methodOfSorting === 'DESC') {
+        arrayForSorting.sort((a,b) => b - a);
+    }
+
+    return arrayForSorting;
+}
+
+console.log(`Array ${arrayForSorting} after sorting with ${methodOfSorting} method is ${sortArray(arrayForSorting, methodOfSorting)}`)
