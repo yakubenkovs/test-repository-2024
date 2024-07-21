@@ -1,105 +1,103 @@
-let numberForSplitting = `462822`;
+let numberOfPlayers = 4, numberOfAttempts = 2, maxValueBetweenPlayers = 0, counterOfWinners = 0, winnerPosition = 0;
+const playerValues = [];
 
-function checkPartsEqualityOfTheNumber(numberForSplitting) {
-    const digitsForComparison = numberForSplitting.split('');
-    let firstPartOfTheNumber = [], secondPartOfTheNumber = [], summOfTheFirstDigitsPart = 0, summOfTheSecondDigitsPart = 0, isPartsOfTheNumberEqual;
-    secondPartOfTheNumber = digitsForComparison.slice(digitsForComparison.length / 2);
-    firstPartOfTheNumber = digitsForComparison.splice(0, digitsForComparison.length / 2);
+function rollTheDie(numberOfAttempts) {
+    let dieValue = 0, dieValueMax = 0;
 
-    for (let i = 0; i < firstPartOfTheNumber.length; i++) {
-        summOfTheFirstDigitsPart += Number(firstPartOfTheNumber[i]);
-        summOfTheSecondDigitsPart += parseInt(secondPartOfTheNumber[i]);
-    }
+    for (let i = 0; i < numberOfAttempts; i++) {
+        dieValue = Math.floor(Math.random() * (Math.floor(6) - Math.ceil(1) + 1) + Math.ceil(1));
 
-    summOfTheFirstDigitsPart === summOfTheSecondDigitsPart ? isPartsOfTheNumberEqual = true : isPartsOfTheNumberEqual = false;
-
-    return isPartsOfTheNumberEqual;
-}
-
-checkPartsEqualityOfTheNumber(numberForSplitting) ? console.log(`Yes. Sums of parts of the number ${numberForSplitting} are equal`) : console.log(`No. Sums of parts of the number ${numberForSplitting} aren't equal`);
-
-
-let numberForDivision = 500, limitNumber = 15;
-
-function divideNumberBy2(numberForDivision, limitNumber) {
-    let num = 0;
-
-    for (numberForDivision; numberForDivision > limitNumber; numberForDivision /= 2) {
-        num++;
-    }
-    
-    numberForDivision *= 2;
-    num--;
-    return {numberForDivision, num};
-}
-
-console.log(`Finish number after division ${numberForDivision} by 2 before limit of ${limitNumber} is ${divideNumberBy2 (numberForDivision, limitNumber).numberForDivision} and iterations number is ${divideNumberBy2 (numberForDivision, limitNumber).num}`);
-
-
-let arr = [12,15,20,25,59,79];
-
-function checkAverageValueOfTheArray(arr) {
-    let summOfTheArray = 0, averageValueOftheArray = 0;
-    
-    for (let i = 0; i < arr.length; i++) {
-        summOfTheArray += parseInt(arr[i]);
-    }
-
-    averageValueOftheArray = summOfTheArray / arr.length;
-    
-    return averageValueOftheArray;
-}
-
-console.log(`Average value of the array ${arr} is ${checkAverageValueOfTheArray(arr)}`);
-
-
-let arrayToUpdateValues = [1,2,3,4,5], valuesToInput = ['a','b','c'], placeToInput = 3;
-
-function pushElementsToArray(arrayToUpdateValues, valuesToInput, placeToInput) {
-    valuesToInput = valuesToInput.join(',');
-    arrayToUpdateValues.splice(placeToInput, 0, valuesToInput);
-
-    return arrayToUpdateValues;
-}
-
-console.log(`Values ${valuesToInput} are inserted from the index ${placeToInput} to the array ${arrayToUpdateValues} as ${pushElementsToArray(arrayToUpdateValues,valuesToInput,placeToInput)}`);
-
-
-let arrayToUpdateSeveralValues = [1,2,3,4,5], valuesToSeveralInput = ['a','b','c','e','d'], placesToSeveralInputs = [1,3,6];
-
-function pushElementsToArrayInSeveralPositions(arrayToUpdateSeveralValues, valuesToSeveralInput, placesToSeveralInputs) {
-    let minimumValueToRandom = 1, partOfArrayToInput = [];
-
-    for (let i = 0; i < placesToSeveralInputs.length; i++) {
-
-        if (i === placesToSeveralInputs.length - 1) {
-            valuesToSeveralInput = valuesToSeveralInput.join(',');
-            arrayToUpdateSeveralValues.splice(placesToSeveralInputs[i], 0, valuesToSeveralInput);
-        } 
-        else {
-            partOfArrayToInput = valuesToSeveralInput.splice(0, Math.floor(Math.random() * (Math.floor(valuesToSeveralInput.length - placesToSeveralInputs.length + i) - Math.ceil(minimumValueToRandom) + 1) + Math.ceil(minimumValueToRandom)));
-            partOfArrayToInput = partOfArrayToInput.join(',');
-            arrayToUpdateSeveralValues.splice(placesToSeveralInputs[i], 0, partOfArrayToInput);
+        if (dieValue > dieValueMax) {
+            dieValueMax = dieValue;
         }
     }
 
-    return arrayToUpdateSeveralValues;
+    return dieValueMax;
 }
 
-console.log(`Values ${valuesToSeveralInput} are inserted from the indexes ${placesToSeveralInputs} to the array ${arrayToUpdateSeveralValues} as ${pushElementsToArrayInSeveralPositions(arrayToUpdateSeveralValues,valuesToSeveralInput,placesToSeveralInputs)}`);
+for (let i = 0; i < numberOfPlayers; i ++) {
+    playerValues.push(rollTheDie(numberOfAttempts));
+
+    if (playerValues[i] > maxValueBetweenPlayers) {
+        maxValueBetweenPlayers = playerValues[i];
+        counterOfWinners = 1;
+        winnerPosition = i;
+    } else if (playerValues[i] === maxValueBetweenPlayers) {
+        counterOfWinners++;
+    }
+}
+
+console.log(`Results of the game - ${playerValues}`);
+console.log(`Number of winners - ${counterOfWinners}`);
+
+if (counterOfWinners === 1) {
+    console.log(`Max value ${maxValueBetweenPlayers} from ${winnerPosition+1} player`);
+}
+else {
+    console.log(`Max value ${maxValueBetweenPlayers} but it's a draw`);
+}
 
 
-let arrayForSorting = [3,4,1,5,85,60,7,30,50], methodOfSorting = 'ASC';
+let numberToSplit = 20, partsQuantity = 5;
 
-function sortArray(arrayForSorting, methodOfSorting) {
+function splitTheNumberIntoIntValues(numberToSplit, partsQuantity) {
+    let partOfTheNumber = 0, counterOfThePartsValues = 0, minimumValueToRandom = 1, splittedNumber = numberToSplit;
+    const partsOfTheNumber = [];
 
-    if (methodOfSorting === 'ASC') {
-        arrayForSorting.sort((a,b) => a - b);
-    } else if (methodOfSorting === 'DESC') {
-        arrayForSorting.sort((a,b) => b - a);
+    for (let i = 0; i < partsQuantity; i++) {
+
+        if (i === partsQuantity - 1) {
+            partsOfTheNumber.push(numberToSplit - counterOfThePartsValues);
+        } 
+        else {
+            partOfTheNumber = Math.floor(Math.random() * (Math.floor(splittedNumber - partsQuantity) - Math.ceil(minimumValueToRandom)) + Math.ceil(minimumValueToRandom));
+            splittedNumber -= partOfTheNumber;
+            partOfTheNumber <= 0 ? partOfTheNumber = 1 : 0;
+            partsOfTheNumber.push(partOfTheNumber);
+            counterOfThePartsValues += partOfTheNumber;
+        }
     }
 
-    return arrayForSorting;
+    return partsOfTheNumber;
 }
 
-console.log(`Array ${arrayForSorting} after sorting with ${methodOfSorting} method is ${sortArray(arrayForSorting, methodOfSorting)}`)
+function splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity) {
+    let partOfTheNumber = 0, counterOfThePartsValues = 0, minimumValueToRandom = 0.01, splittedNumber = numberToSplit;
+    const partsOfTheNumber = [];
+
+    for (let i = 0; i < partsQuantity; i++) {
+
+        if (i === partsQuantity - 1) {
+            partsOfTheNumber.push(+(numberToSplit - counterOfThePartsValues).toFixed(2));
+        } 
+        else {
+            partOfTheNumber = Number((Math.random() * ((splittedNumber - partsQuantity) - minimumValueToRandom) + minimumValueToRandom).toFixed(2));
+            splittedNumber -= partOfTheNumber;
+            partOfTheNumber <= 0 ? partOfTheNumber = 0.01 : 0;
+            partsOfTheNumber.push(partOfTheNumber);
+            counterOfThePartsValues += partOfTheNumber;
+        }
+    }
+
+    return partsOfTheNumber;
+}
+
+console.log (`Number ${numberToSplit} is splitted into ${partsQuantity} int parts as ${splitTheNumberIntoIntValues(numberToSplit, partsQuantity)}`);
+console.log (`Number ${numberToSplit} is splitted into ${partsQuantity} decimal parts as ${splitTheNumberIntoDecimalValues(numberToSplit, partsQuantity)}`);
+
+
+let dateStartValue = '2011-01-01';
+
+function calculateAmountOfFriday13th(dateStartValue) {
+    let dayOfTheWeek = 5, dateOfTheMonth = 13, counterOfFriday13th = 0;
+    let currentTimeInDays = Date.now() / 86400000;
+
+    for (let dateStartInDays = Date.parse(dateStartValue) / 86400000; dateStartInDays < currentTimeInDays - 1; dateStartInDays++) {
+        dateStartObject = new Date(dateStartInDays * 86400000);
+        dateStartObject.getDay() === dayOfTheWeek && dateStartObject.getDate() === dateOfTheMonth ? counterOfFriday13th++ : 0;
+    }
+
+    return counterOfFriday13th;
+}
+
+console.log(`Amount of Fridays 13th from ${dateStartValue} until now is ${calculateAmountOfFriday13th(dateStartValue)}`);
