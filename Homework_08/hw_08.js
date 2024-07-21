@@ -62,4 +62,4 @@ function pushElementsToArray(arrayToUpdateValues, valuesToInput, placeToInput) {
     return arrayToUpdateValues;
 }
 
-console.log(`Values ${valuesToInput} are insersted from the index ${placeToInput} to the array ${arrayToUpdateValues} as ${pushElementsToArray(arrayToUpdateValues,valuesToInput,placeToInput)}`);
+console.log(`Values ${valuesToInput} are inserted from the index ${placeToInput} to the array ${arrayToUpdateValues} as ${pushElementsToArray(arrayToUpdateValues,valuesToInput,placeToInput)}`);
