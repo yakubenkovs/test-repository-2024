@@ -58,8 +58,48 @@ let arrayToUpdateValues = [1,2,3,4,5], valuesToInput = ['a','b','c'], placeToInp
 function pushElementsToArray(arrayToUpdateValues, valuesToInput, placeToInput) {
     valuesToInput = valuesToInput.join(',');
     arrayToUpdateValues.splice(placeToInput, 0, valuesToInput);
-    
+
     return arrayToUpdateValues;
 }
 
 console.log(`Values ${valuesToInput} are inserted from the index ${placeToInput} to the array ${arrayToUpdateValues} as ${pushElementsToArray(arrayToUpdateValues,valuesToInput,placeToInput)}`);
+
+
+let arrayToUpdateSeveralValues = [1,2,3,4,5], valuesToSeveralInput = ['a','b','c','e','d'], placesToSeveralInputs = [1,3,6];
+
+function pushElementsToArrayInSeveralPositions(arrayToUpdateSeveralValues, valuesToSeveralInput, placesToSeveralInputs) {
+    let minimumValueToRandom = 1, partOfArrayToInput = [];
+
+    for (let i = 0; i < placesToSeveralInputs.length; i++) {
+
+        if (i === placesToSeveralInputs.length - 1) {
+            valuesToSeveralInput = valuesToSeveralInput.join(',');
+            arrayToUpdateSeveralValues.splice(placesToSeveralInputs[i], 0, valuesToSeveralInput);
+        } 
+        else {
+            partOfArrayToInput = valuesToSeveralInput.splice(0, Math.floor(Math.random() * (Math.floor(valuesToSeveralInput.length - placesToSeveralInputs.length + i) - Math.ceil(minimumValueToRandom) + 1) + Math.ceil(minimumValueToRandom)));
+            partOfArrayToInput = partOfArrayToInput.join(',');
+            arrayToUpdateSeveralValues.splice(placesToSeveralInputs[i], 0, partOfArrayToInput);
+        }
+    }
+
+    return arrayToUpdateSeveralValues;
+}
+
+console.log(`Values ${valuesToSeveralInput} are inserted from the indexes ${placesToSeveralInputs} to the array ${arrayToUpdateSeveralValues} as ${pushElementsToArrayInSeveralPositions(arrayToUpdateSeveralValues,valuesToSeveralInput,placesToSeveralInputs)}`);
+
+
+let arrayForSorting = [3,4,1,5,85,60,7,30,50], methodOfSorting = 'ASC';
+
+function sortArray(arrayForSorting, methodOfSorting) {
+
+    if (methodOfSorting === 'ASC') {
+        arrayForSorting.sort((a,b) => a - b);
+    } else if (methodOfSorting === 'DESC') {
+        arrayForSorting.sort((a,b) => b - a);
+    }
+
+    return arrayForSorting;
+}
+
+console.log(`Array ${arrayForSorting} after sorting with ${methodOfSorting} method is ${sortArray(arrayForSorting, methodOfSorting)}`)
