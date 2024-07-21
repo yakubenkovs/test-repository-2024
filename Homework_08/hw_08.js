@@ -51,3 +51,15 @@ function checkAverageValueOfTheArray(arr) {
 }
 
 console.log(`Average value of the array ${arr} is ${checkAverageValueOfTheArray(arr)}`);
+
+
+let arrayToUpdateValues = [1,2,3,4,5], valuesToInput = ['a','b','c'], placeToInput = 3;
+
+function pushElementsToArray(arrayToUpdateValues, valuesToInput, placeToInput) {
+    valuesToInput = valuesToInput.join(',');
+    arrayToUpdateValues.splice(placeToInput, 0, valuesToInput);
+    
+    return arrayToUpdateValues;
+}
+
+console.log(`Values ${valuesToInput} are insersted from the index ${placeToInput} to the array ${arrayToUpdateValues} as ${pushElementsToArray(arrayToUpdateValues,valuesToInput,placeToInput)}`);
