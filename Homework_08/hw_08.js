@@ -1,6 +1,6 @@
 let numberForSplitting = `462822`;
 
-function checkPartsEqualityOfTheNumber (numberForSplitting) {
+function checkPartsEqualityOfTheNumber(numberForSplitting) {
     const digitsForComparison = numberForSplitting.split('');
     let firstPartOfTheNumber = [], secondPartOfTheNumber = [], summOfTheFirstDigitsPart = 0, summOfTheSecondDigitsPart = 0, isPartsOfTheNumberEqual;
     secondPartOfTheNumber = digitsForComparison.slice(digitsForComparison.length / 2);
@@ -21,7 +21,7 @@ checkPartsEqualityOfTheNumber(numberForSplitting) ? console.log(`Yes. Sums of pa
 
 let numberForDivision = 500, limitNumber = 15;
 
-function divideNumberBy2 (numberForDivision, limitNumber) {
+function divideNumberBy2(numberForDivision, limitNumber) {
     let num = 0;
 
     for (numberForDivision; numberForDivision > limitNumber; numberForDivision /= 2) {
@@ -34,3 +34,20 @@ function divideNumberBy2 (numberForDivision, limitNumber) {
 }
 
 console.log(`Finish number after division ${numberForDivision} by 2 before limit of ${limitNumber} is ${divideNumberBy2 (numberForDivision, limitNumber).numberForDivision} and iterations number is ${divideNumberBy2 (numberForDivision, limitNumber).num}`);
+
+
+let arr = [12,15,20,25,59,79];
+
+function checkAverageValueOfTheArray(arr) {
+    let summOfTheArray = 0, averageValueOftheArray = 0;
+    
+    for (let i = 0; i < arr.length; i++) {
+        summOfTheArray += parseInt(arr[i]);
+    }
+
+    averageValueOftheArray = summOfTheArray / arr.length;
+    
+    return averageValueOftheArray;
+}
+
+console.log(`Average value of the array ${arr} is ${checkAverageValueOfTheArray(arr)}`);
