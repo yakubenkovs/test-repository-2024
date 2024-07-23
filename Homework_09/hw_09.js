@@ -1,7 +1,9 @@
-randomValue = Math.floor(Math.random() * (Math.floor(5) - Math.ceil(1) + 1) + Math.ceil(1));
+function randomValue(min = 1, max = 5) {
+    return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
+}
 
-const promise1 = new Promise(resolve => setTimeout(resolve, randomValue, '1'));
-const promise2 = new Promise(resolve => setTimeout(resolve, randomValue, '2'));
-const promise3 = new Promise(resolve => setTimeout(resolve, randomValue, '3'));
+const promiseOne = new Promise(resolve => setTimeout(resolve, randomValue(), '1'));
+const promiseTwo = new Promise(resolve => setTimeout(resolve, randomValue(), '2'));
+const promiseThree = new Promise(resolve => setTimeout(resolve, randomValue(), '3'));
 
-Promise.race([promise1, promise2, promise3]).then(value => console.log(value));
+Promise.race([promiseOne, promiseTwo, promiseThree]).then(value => console.log(value));
