@@ -17,8 +17,17 @@ function getNum (min = 1, max = 5, timeoutValue = 3000) {
 
 async function squareTheNumber() {
     const numberValue = await getNum();
-    let squaredNumber = Math.pow(numberValue, 2);
+    const squaredNumber = Math.pow(numberValue, 2);
     return {numberValue: numberValue, squaredNumber: squaredNumber};
 }
 
 console.log(squareTheNumber().then(squaredValues => console.log(`Value ${squaredValues.numberValue} squared is ${squaredValues.squaredNumber}`)));
+
+
+async function summTwoNumbers() {
+    const numberValueOne = await getNum(), numberValueTwo = await getNum(6, 10, 5000);
+    const summOfTwoValues = numberValueOne + numberValueTwo;
+    return {numberValueOne: numberValueOne, numberValueTwo: numberValueTwo, summOfTwoValues: summOfTwoValues};
+}
+
+console.log(summTwoNumbers().then(summOfValues => console.log(`Summ of values ${summOfValues.numberValueOne} and ${summOfValues.numberValueTwo} is ${summOfValues.summOfTwoValues}`)));
