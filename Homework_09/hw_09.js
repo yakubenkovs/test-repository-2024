@@ -25,9 +25,9 @@ console.log(squareTheNumber().then(squaredValues => console.log(`Value ${squared
 
 
 async function summTwoNumbers() {
-    const numberValueOne = await getNum(), numberValueTwo = await getNum(6, 10, 5000);
-    const summOfTwoValues = numberValueOne + numberValueTwo;
-    return {numberValueOne, numberValueTwo, summOfTwoValues};
+    const firstNumberValue = await getNum(), secondNumberValue = await getNum(6, 10, 5000);
+    const summOfTwoValues = firstNumberValue + secondNumberValue;
+    return {firstNumberValue, secondNumberValue, summOfTwoValues};
 }
 
-console.log(summTwoNumbers().then(summOfValues => console.log(`Summ of values ${summOfValues.numberValueOne} and ${summOfValues.numberValueTwo} is ${summOfValues.summOfTwoValues}`)));
+console.log(summTwoNumbers().then(summOfValues => console.log(`Summ of values ${summOfValues.firstNumberValue} and ${summOfValues.secondNumberValue} is ${summOfValues.summOfTwoValues}`)));
