@@ -6,19 +6,19 @@ function getPromise(screenValue) {
     return new Promise (resolve => setTimeout(resolve, randomValue(), screenValue));
 }
 
-const promiseOne = getPromise(1), promiseTwo = getPromise(2), promiseThree = getPromise(3);
+const firstPromise = getPromise(1), secondPromise = getPromise(2), thirdPromise = getPromise(3);
 
-Promise.race([promiseOne, promiseTwo, promiseThree]).then(firstValueByTime => console.log(`First promise is ${firstValueByTime}`));
+Promise.race([firstPromise, secondPromise, thirdPromise]).then(firstValueByTime => console.log(`First promise is ${firstValueByTime}`));
 
 
 function getNum (min = 1, max = 5, timeoutValue = 3000) {
-    return new Promise(resolve => setTimeout(resolve, timeoutValue, Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min))));
+    return new Promise(resolve => setTimeout(resolve, timeoutValue, randomValue(min, max)));
 }
 
 async function squareTheNumber() {
     const numberValue = await getNum();
     const squaredNumber = Math.pow(numberValue, 2);
-    return {numberValue: numberValue, squaredNumber: squaredNumber};
+    return {numberValue, squaredNumber};
 }
 
 console.log(squareTheNumber().then(squaredValues => console.log(`Value ${squaredValues.numberValue} squared is ${squaredValues.squaredNumber}`)));
@@ -27,7 +27,7 @@ console.log(squareTheNumber().then(squaredValues => console.log(`Value ${squared
 async function summTwoNumbers() {
     const numberValueOne = await getNum(), numberValueTwo = await getNum(6, 10, 5000);
     const summOfTwoValues = numberValueOne + numberValueTwo;
-    return {numberValueOne: numberValueOne, numberValueTwo: numberValueTwo, summOfTwoValues: summOfTwoValues};
+    return {numberValueOne, numberValueTwo, summOfTwoValues};
 }
 
 console.log(summTwoNumbers().then(summOfValues => console.log(`Summ of values ${summOfValues.numberValueOne} and ${summOfValues.numberValueTwo} is ${summOfValues.summOfTwoValues}`)));
