@@ -1,0 +1,23 @@
+const {Candy} = require("./candy");
+
+class lollipopCandy extends Candy {
+    constructor (type, weight, calories, colour, stick) {
+        super(type, weight, calories, colour);
+        this.stick = stick;
+        this.numberOfLollipopCandies = 0;
+    }
+
+    getOfNumberOfLollipopCandies() {
+        return this.numberOfLollipopCandies;
+    }
+
+    setLollipopCandiesNumber(numberOfLollipopCandies) {
+        this.numberOfLollipopCandies += numberOfLollipopCandies;
+    }
+
+    getWeightOfLollipopCandy() {
+        return this.weight;
+    }
+}
+
+module.exports = {lollipopCandy};
