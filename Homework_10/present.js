@@ -4,7 +4,7 @@ const {marshmallowCandy} = require("./marshmallowCandy")
 
 class Present {
     constructor() {
-        this.presentSize=[];
+        this.present=[];
     }
 
     addCandy(candy) {
@@ -12,7 +12,11 @@ class Present {
     }
 
     getWeightOfThePresent() {
-        return this.present.reduce((acc, next) => acc.weight + next.weight)
+        return this.present.reduce((acc, next) => acc + next.weightOfCandies, 0);
+    }
+
+    sortByCalories(){
+        return this.present.sort((min, max) => min.calories - max.calories)
     }
 }
 
