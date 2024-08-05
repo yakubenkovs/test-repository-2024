@@ -5,18 +5,27 @@ class lollipopCandy extends Candy {
         super(type, weight, calories, colour);
         this.stick = stick;
         this.numberOfLollipopCandies = 0;
+        this.weightOfCandies = 0;
     }
 
-    getOfNumberOfLollipopCandies() {
+    getNumberOfLollipopCandies() {
         return this.numberOfLollipopCandies;
-    }
-
-    setLollipopCandiesNumber(numberOfLollipopCandies) {
-        this.numberOfLollipopCandies += numberOfLollipopCandies;
     }
 
     getWeightOfLollipopCandy() {
         return this.weight;
+    }
+
+    getWeightOfLollipopCandies() {
+        return this.weightOfCandies;
+    }
+
+    setLollipopCandiesNumber(numberOfLollipopCandies) {
+        this.numberOfLollipopCandies = numberOfLollipopCandies;
+    }
+
+    setLollipopCandiesWeight() {
+        this.weightOfCandies = this.weight * this.numberOfLollipopCandies;
     }
 }
 
