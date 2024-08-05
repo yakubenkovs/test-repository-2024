@@ -6,20 +6,28 @@ class chocoCandy extends Candy {
         this.glaze = glaze;
         this.nuts = nuts;
         this.numberOfChocoCandies = 0;
+        this.weightOfCandies = 0;
     }
 
-    getOfNumberOfChocoCandies() {
+    getNumberOfChocoCandies() {
         return this.numberOfChocoCandies;
-    }
-
-    setChocoCandiesNumber(numberOfChocoCandies) {
-        this.numberOfChocoCandies += numberOfChocoCandies;
     }
 
     getWeightOfChocoCandy() {
         return this.weight;
     }
+
+    getWeightOfChocoCandies() {
+        return this.weightOfCandies;
+    }
+
+    setChocoCandiesNumber(numberOfChocoCandies) {
+        this.numberOfChocoCandies = numberOfChocoCandies;
+    }
+
+    setChocoCandiesWeight() {
+        this.weightOfCandies = this.weight * this.numberOfChocoCandies;
+    }
 }
 
 module.exports = {chocoCandy};
-
