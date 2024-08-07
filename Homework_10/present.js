@@ -15,8 +15,12 @@ class Present {
         return this.present.reduce((acc, next) => acc + next.weightOfCandies, 0);
     }
 
-    sortByCalories(){
+    sortByCalories() {
         return this.present.sort((min, max) => min.calories - max.calories)
+    }
+
+    findCandyByParameters(caloriesLimitPerCandy, colourValues) {
+            return this.present.find(({calories, colour}) => calories <= caloriesLimitPerCandy && colour === colourValues); 
     }
 }
 

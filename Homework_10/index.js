@@ -24,5 +24,6 @@ addCandy(marshmallowCandies);
 
 console.log(`Weight of the present is ${present.getWeightOfThePresent()}`);
 
-present.sortByCalories();
-console.log(`Sort by calories of 1 piece from min to max: `, present);
+console.log(`Sort by calories of 1 piece from min to max:`, present.sortByCalories());
+
+console.log(`Candies by limited calories value per candy and colour are:`, present.findCandyByParameters(500, "brown"));
