@@ -5,27 +5,23 @@ class marshmallowCandy extends Candy {
         super(type, weight, calories, colour);
         this.gelatin = gelatin;
         this.numberOfMarshmallowCandies = 0;
-        this.weightOfCandies = 0;
     }
 
+    getGelatinValueOfMarshmallowCandy() {
+        return this.gelatin;
+    }
+    
     getNumberOfMarshmallowCandies() {
         return this.numberOfMarshmallowCandies;
     }
 
-    getWeightOfMarshmallowCandy() {
-        return this.weight;
+    setGelatinValueOfMarshmallowCandy(gelatinValue) {
+        this.gelatin = gelatinValue;
     }
 
-    getWeightOfMarshmallowCandies() {
-        return this.weightOfCandies;
-    }
-
-    setMarshmallowCandiesNumber(numberOfMarshmallowCandies) {
+    setNumberOfMarshmallowCandies(numberOfMarshmallowCandies) {
         this.numberOfMarshmallowCandies = numberOfMarshmallowCandies;
-    }
-
-    setMarshmallowCandiesWeight() {
-        this.weightOfCandies = this.weight * this.numberOfMarshmallowCandies;
+        super.addWeightOfCandy(this.weight, this.numberOfMarshmallowCandies);
     }
 }
 

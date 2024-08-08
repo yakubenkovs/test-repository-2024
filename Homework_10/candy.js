@@ -6,20 +6,36 @@ class Candy {
         this.colour = colour;
     }
 
-    getWeight() {
+    getTypeOfCandy() {
+        return this.type;
+    }
+
+    getWeightOfCandy() {
         return this.weight;
     }
 
-    addWeight(itemWeight) {
-        this.weight += itemWeight;
-    }
-
-    getCalories() {
+    getCaloriesOfCandy() {
         return this.calories;
     }
 
-    getColour() {
+    getColourOfCandy() {
         return this.colour;
+    }
+
+    setTypeOfCandy(typeOfCandy) {
+        this.type = typeOfCandy;
+    }
+
+    addWeightOfCandy(weightOfCandy, numberOfCandies) {
+        this.weight = weightOfCandy * numberOfCandies;
+    }
+
+    addCaloriesOfCandy(caloriesOfCandy) {
+        this.calories = caloriesOfCandy;
+    }
+
+    setColourOfCandy(colourOfCandy) {
+        this.colour = colourOfCandy;
     }
 }
 

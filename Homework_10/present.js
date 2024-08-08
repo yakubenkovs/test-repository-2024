@@ -12,7 +12,7 @@ class Present {
     }
 
     getWeightOfThePresent() {
-        return this.present.reduce((acc, next) => acc + next.weightOfCandies, 0);
+        return this.present.reduce((acc, next) => acc + next.weight, 0);
     }
 
     sortByCalories() {
