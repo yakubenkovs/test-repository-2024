@@ -99,3 +99,18 @@ export function map<mapperType, inputType>(mapper?: (value: inputType) => mapper
     }
     return input.map(mapper);
 }
+
+export function filter<filtererType, inputType>(filterer?: (value: inputType) => filtererType, input?: inputType[]): inputType[] | Function  {
+    if (arguments.length === 0) {
+        return filter;
+    }
+    if (arguments.length === 1) {
+        return function subFunction(subInput?: inputType[]): inputType[] | Function {
+            if (arguments.length === 0) {
+                return subFunction;
+            }
+            return subInput.filter(filterer);
+        };
+    }
+    return input.filter(filterer);
+}
