@@ -1,0 +1,15 @@
+{
+  "name": "homework_12",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && node build/hw_12.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "typescript": "^5.5.4"
+  }
+}
