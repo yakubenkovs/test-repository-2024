@@ -20,3 +20,82 @@ const users1: IUsers[] = [
         children: 2
     }
 ];
+
+
+type User = {
+    name: string,
+    age: number,
+    occupation?: string
+    role?: string
+}
+
+type Admin = {
+    name: string,
+    age: number,
+    role: string
+}
+
+type Person = User | Admin;
+
+const persons: Person[] = [
+    {
+        name: 'Max Mustermann',
+        age: 25,
+        occupation: 'Chimney sweep'
+    },
+    {
+        name: 'Jane Doe',
+        age: 32,
+        role: 'Administrator'
+    },
+    {
+        name: 'Kate Müller',
+        age: 23,
+        occupation: 'Astronaut'
+    },
+    {
+        name: 'Bruce Willis',
+        age: 64,
+        role: 'World saver'
+    }
+];
+
+
+export class ObjectManipulator<objType, valueType> {
+
+    constructor(protected obj: objType) {}
+
+    public set(key: keyof objType, value: valueType): Object {
+        return new ObjectManipulator<objType, valueType>({...this.obj, [key]: value});
+    }
+
+    public get(key: keyof objType): objType[keyof objType] {
+        return this.obj[key];
+    }
+
+    public delete(key: keyof objType): Object {
+        const newObj: objType = {...this.obj};
+        delete newObj[key];
+        return new ObjectManipulator<objType, valueType>(newObj);
+    }
+
+    public getObject(): objType {
+        return this.obj;
+    }
+}
+
+
+export function map<mapperType, inputType>(mapper?: (value: inputType) => mapperType, input?: inputType[]): mapperType[] | Function {
+    if (arguments.length === 0) {
+        return map;
+    }
+    if (arguments.length === 1) {
+        return function subFunction(subInput?: inputType[]): mapperType[] | Function  {
+            if (arguments.length === 0) {
+                return subFunction;
+            }
+            return subInput.map(mapper);
+        };
+    }
+    return input.map(mapper);
+}
