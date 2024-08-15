@@ -10,14 +10,14 @@ on:
 
 jobs:
   test:
-    runs-on: ununtu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install Node JS
         uses: actions/setup-node@v3    
-      - name: Install dependencies
+      - name: Install Dependencies
         working-directory: ./Homework_14
         run: npm install
       - name: Test runner
