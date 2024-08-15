@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v3    
       - name: Install Dependencies
         working-directory: ./Homework_14
-        run: npm install
+        run: npm install --force
       - name: Test runner
         working-directory: ./Homework_14
         run: npm run test
