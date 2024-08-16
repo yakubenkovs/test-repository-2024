@@ -158,9 +158,83 @@ describe('Multiply function checks', () => {
 
 describe('Subtraction function check', () => {
 
-    it('Check of correct subtraction of two positive numbers', async () => {
-        const result = calculator.subtraction(7,4);
-        expect(result).to.equal(3);
+    describe('Positive checks of subtraction function', () => {
+
+        it('Check of correct subtraction of two positive numbers', async () => {
+            const result = calculator.subtraction(7,4);
+            expect(result).to.equal(3);
+        });
+
+        it('Check of correct subtraction of two negative numbers', async () => {       
+            const result = calculator.subtraction(-5, -2);
+            expect(result).to.equal(-3);
+        });
+
+        it('Check of correct subtraction of 1 positive number and zero', async () => {       
+            const result = calculator.subtraction(3, 0);
+            expect(result).to.equal(3);
+        });
+
+        it('Check of correct subtraction of zero and 2 negative numbers', async () => {       
+            let result = calculator.subtraction(0, -22);
+            result = calculator.subtraction(result, -2)
+            expect(result).to.equal(24);
+        });
+
+        it('Check of correct subtraction of 1 positive and 1 negative number', async () => {       
+            const result = calculator.subtraction(5, -2);
+            expect(result).to.equal(7);
+        });
+
+        it('Check of correct subtraction of 4 decimal numbers', async () => {       
+            let result = +(calculator.subtraction(6.3, 2.2)).toFixed(2);
+            result = +(calculator.subtraction(result, 1.0)).toFixed(2);
+            result = +(calculator.subtraction(result, 4.39)).toFixed(2);
+            expect(result).to.equal(-1.29);
+        });
+
+        it('Check of correct subtraction of 2 decimal and 3 integer numbers', async () => {       
+            let result = calculator.subtraction(220.15, 8.8);
+            result = calculator.subtraction(result, 15);
+            result = calculator.subtraction(result, 5.1);
+            result = calculator.subtraction(result, 13.37);
+            expect(result).to.equal(177.88);
+        });
+
+        it('Check of correct subtraction of 4 big numbers', async () => {       
+            let result = calculator.subtraction(3463636363, 4463663);
+            result = calculator.subtraction(result, 74346346.347);
+            result = calculator.subtraction(result, 547437437.3474);
+            expect(result).to.equal(2837388916.3056);
+        });
+    });
+
+    describe('Negative checks of subtraction function', () => {
+
+        it('Check of incorrect subtraction of 1 positive number and NaN', async () => {       
+            const result = calculator.subtraction(34, NaN);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect subtraction of 2 NaN', async () => {       
+            const result = calculator.subtraction(NaN, NaN);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect subtraction of 1 negative number and undefinded', async () => {       
+            const result = calculator.subtraction(-27, undefined);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect subtraction of 2 undefinded', async () => {       
+            const result = calculator.subtraction(undefined, undefined);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect subtraction of zero and string', async () => {       
+            const result = calculator.subtraction(0, '4');
+            expect(result).to.equal(-4);
+        });
     });
 });
 
