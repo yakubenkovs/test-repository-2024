@@ -70,9 +70,9 @@ describe('Add function checks', () => {
             expect(isNaN(result)).to.equal(true);
         });
 
-        it('Check of incorrect addition of zero and string', async () => {       
-            const result = calculator.add(0, '0');
-            expect(result).to.equal('00');
+        it('Check of incorrect addition of number and string', async () => {       
+            const result = calculator.add(7, '8');
+            expect(result).to.equal('78');
         });
     });
 });
@@ -82,7 +82,7 @@ describe('Multiply function checks', () => {
     describe('Positive checks of multiply function', () => {
         
         it('Check of correct multiplication of two positive numbers', async () => {
-            const result = calculator.multiply(5,3);
+            const result = calculator.multiply(5, 3);
             expect(result).to.equal(15);
         });
 
@@ -121,13 +121,13 @@ describe('Multiply function checks', () => {
             expect(result).to.equal(3040868750235443);
         });
 
-        it('Check of correct multiplication of number and number as string', async () => {       
+        it('Check of correct multiplication of number and number as a string', async () => {       
             const result = calculator.multiply(4, '6');
             expect(result).to.equal(24);
         });
     });
 
-    describe('Negative checks of multiply funtion', () => {
+    describe('Negative checks of multiply function', () => {
 
         it('Check of incorrect multiplication of 1 positive number and NaN', async () => {       
             const result = calculator.multiply(28, NaN);
@@ -150,18 +150,18 @@ describe('Multiply function checks', () => {
         });
 
         it('Check of incorrect multiplication of number and string', async () => {       
-            const result = calculator.multiply("5s", "4");
+            const result = calculator.multiply(4, "5s");
             expect(isNaN(result)).to.equal(true);
         });
     });
 });
 
-describe('Subtraction function check', () => {
+describe('Subtraction function checks', () => {
 
     describe('Positive checks of subtraction function', () => {
 
         it('Check of correct subtraction of two positive numbers', async () => {
-            const result = calculator.subtraction(7,4);
+            const result = calculator.subtraction(7, 4);
             expect(result).to.equal(3);
         });
 
@@ -207,6 +207,11 @@ describe('Subtraction function check', () => {
             result = calculator.subtraction(result, 547437437.3474);
             expect(result).to.equal(2837388916.3056);
         });
+
+        it('Check of correct subtraction of number and number as a string', async () => {       
+            const result = calculator.subtraction(6, '4');
+            expect(result).to.equal(2);
+        });
     });
 
     describe('Negative checks of subtraction function', () => {
@@ -231,25 +236,153 @@ describe('Subtraction function check', () => {
             expect(isNaN(result)).to.equal(true);
         });
 
-        it('Check of incorrect subtraction of zero and string', async () => {       
-            const result = calculator.subtraction(0, '4');
-            expect(result).to.equal(-4);
+        it('Check of incorrect subtraction of number and string', async () => {       
+            const result = calculator.subtraction(7, '4h');
+            expect(isNaN(result)).to.equal(true);
         });
     });
 });
 
-describe('Divide function check', () => {
+describe('Divide function checks', () => {
 
-    it('Check of correct division of two positive numbers', async () => {
-        const result = calculator.divide(20,4);
-        expect(result).to.equal(5);
+    describe('Positive checks of divide function', () => {
+
+        it('Check of correct division of two positive numbers', async () => {
+            const result = calculator.divide(20, 4);
+            expect(result).to.equal(5);
+        });
+
+        it('Check of correct division of two negative numbers', async () => {       
+            const result = calculator.divide(-49, -7);
+            expect(result).to.equal(7);
+        });
+
+        it('Check of correct division of zero and 2 negative numbers', async () => {       
+            let result = calculator.divide(0, -38);
+            result = calculator.divide(result, -53);
+            expect(result).to.equal(0);
+        });
+
+        it('Check of correct division of 1 positive and 1 negative number', async () => {       
+            const result = calculator.divide(27, -9);
+            expect(result).to.equal(-3);
+        });
+
+        it('Check of correct division of 4 decimal numbers', async () => {       
+            let result = calculator.divide(7.2, 2.2);
+            result = calculator.divide(result, 1.42);
+            result = +(calculator.divide(result, 5.9)).toFixed(5);
+            expect(result).to.equal(0.39063);
+        });
+
+        it('Check of correct division of 2 decimal and 3 integer numbers', async () => {       
+            let result = calculator.divide(120.74, 173, 2.8, 1.3, 61.16);
+            result = calculator.divide(result, 2.8);
+            result = calculator.divide(result, 1.3);
+            result = +(calculator.divide(result, 61.16)).toFixed(5);
+            expect(result).to.equal(0.00313);
+        });
+
+        it('Check of correct division of 2 big numbers', async () => {       
+            const result = +(calculator.divide(17372457474838, 3683838683.383688)).toFixed(5);
+            expect(result).to.equal(4715.85728);
+        });
+
+        it('Check of correct division of number and number as a string', async () => {       
+            const result = calculator.divide(8, '4');
+            expect(result).to.equal(2);
+        });
+    });
+
+    describe('Negative checks of divide function', () => {
+
+        it('Check of incorrect division of 1 positive number and zero', async () => {       
+            const result = calculator.divide(3, 0);
+            expect(result).to.equal(Infinity);
+        });
+
+        it('Check of incorrect division of 1 positive number and NaN', async () => {       
+            const result = calculator.divide(26, NaN);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect division of 2 NaN', async () => {       
+            const result = calculator.divide(NaN, NaN);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect division of undefinded and 1 negative number', async () => {       
+            const result = calculator.divide(undefined, -93);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect division of 2 undefinded', async () => {       
+            const result = calculator.divide(undefined, undefined);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect division of number and string', async () => {       
+            const result = calculator.divide(3, "1s");
+            expect(isNaN(result)).to.equal(true);
+        });
     });
 });
 
-describe('Exponentiation function check', () => {
+describe('Exponentiation function checks', () => {
 
-    it('Check of correct exponentiation of the number', async () => {
-        const result = calculator.exponentiation(9);
-        expect(result).to.equal(81);
+    describe('Positive checks of exponentiation function', () => {
+
+        it('Check of correct exponentiation of the positive number', async () => {
+            const result = calculator.exponentiation(9);
+            expect(result).to.equal(81);
+        });
+
+        it('Check of correct exponentiation of the negative number', async () => {
+            const result = calculator.exponentiation(-4);
+            expect(result).to.equal(16);
+        });
+
+        it('Check of correct exponentiation of the zero', async () => {
+            const result = calculator.exponentiation(0);
+            expect(result).to.equal(0);
+        });
+
+        it('Check of correct exponentiation of the decimal number', async () => {
+            const result = +(calculator.exponentiation(2.7)).toFixed(2);
+            expect(result).to.equal(7.29);
+        });
+
+        it('Check of correct exponentiation of the big number', async () => {
+            const result = calculator.exponentiation(26279859);
+            expect(result).to.equal(690630989059881);
+        });
+
+        it('Check of correct exponentiation of the exponential number', async () => {
+            const result = calculator.exponentiation(2.46e4);
+            expect(result).to.equal(605160000);
+        });
+
+        it('Check of correct exponentiation of the number as a string', async () => {
+            const result = calculator.exponentiation('17');
+            expect(result).to.equal(289);
+        });
+    });
+
+    describe('Negative checks of exponentiation function', () => {
+
+        it('Check of incorrect exponentiation of NaN', async () => {       
+            const result = calculator.exponentiation(NaN);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect exponentiation of undefinded', async () => {       
+            const result = calculator.exponentiation(undefined);
+            expect(isNaN(result)).to.equal(true);
+        });
+
+        it('Check of incorrect exponentiation of number and string', async () => {       
+            const result = calculator.exponentiation("9s");
+            expect(isNaN(result)).to.equal(true);
+        });
     });
 });
