@@ -9,13 +9,13 @@ class SearchPopUp extends Base {
         return $('#docsearch-input');
     }
 
-    get firstElementAfterSearch() {
+    get firstSuggestionLine() {
         return $('#docsearch-item-0>:first-child>:first-child');
     }
 
-    async searchText(textValueToSearch) {
+    async searchByText(textValueToSearch) {
         await this.inputField.setValue(textValueToSearch);
-        await this.pressElement(await this.firstElementAfterSearch);
+        await this.pressElement(await this.firstSuggestionLine);
     }
 }
 

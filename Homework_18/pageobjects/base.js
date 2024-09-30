@@ -11,10 +11,6 @@ class Base {
         });
         await webElement.click();
     }
-
-    get pageTitle() {
-        return $('.theme-doc-markdown>:first-child>:first-child');
-    }
 }
 
 module.exports = {Base};
