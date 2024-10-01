@@ -1,4 +1,5 @@
 const {test, expect} = require("@playwright/test");
+const {TEXT_CONSTANTS} = require('../helpers/constants');
 const Header = require("../page_objects/component/header");
 const LeftNavigationMenu = require("../page_objects/component/leftNavigationMenu");
 const LocationPopUp = require("../page_objects/component/locationPopUp");
@@ -11,14 +12,6 @@ const SearchResultPage = require("../page_objects/searchResultPage");
 
 test.describe('Amazon tests', async function () {
     let header, leftNavigationMenu, locationPopUp, cartPage, customerPreferencesPage, customerServicePage, homePage, loginPage, searchResultPage;
-    const cartSubtotalTextAfterAdding = 'Subtotal (1 item):';
-    const errorMessageToCompare = 'We cannot find an account with that email address';
-    const newCurrencyValue = 'EUR';
-    const newCountryValue = 'Italy';
-    const problemTextToSearch = 'I Had A Problem With My Delivery';
-    const targetUrl = 'https://www.amazon.com/';
-    const testLoginName = 'testemail246246246@gmail.com';
-    const textToSearch = 'gaming headset';
 
     test.beforeEach(async ({page}) => {
         header = new Header(page);
@@ -33,42 +26,42 @@ test.describe('Amazon tests', async function () {
     });
 
     test('Should be validation error if incorrect login', async ({page}) => {
-        await homePage.navigate(targetUrl);
+        await homePage.navigate(TEXT_CONSTANTS.targetUrl);
         await header.pressElement(await header.accountListsLink);
-        await loginPage.loginToSystem(testLoginName);
-        await expect(await loginPage.errorMessage).toHaveText(errorMessageToCompare);
+        await loginPage.loginToSystem(TEXT_CONSTANTS.testLoginName);
+        await expect(await loginPage.errorMessage).toHaveText(TEXT_CONSTANTS.errorMessageToCompare);
     });
 
-    test('Should change currency to ' + newCurrencyValue + '', async ({page}) => {
-        await homePage.navigate(targetUrl);
+    test('Should change currency to ' + TEXT_CONSTANTS.newCurrencyValue + '', async ({page}) => {
+        await homePage.navigate(TEXT_CONSTANTS.targetUrl);
         await header.pressElement(await header.languageIcon);
-        await customerPreferencesPage.changeSystemCurrency(newCurrencyValue);
-        await header.searchByText(textToSearch);
-        await expect(await searchResultPage.currencyOfFirstSuggestion).toContainText(newCurrencyValue);
+        await customerPreferencesPage.changeSystemCurrency(TEXT_CONSTANTS.newCurrencyValue);
+        await header.searchByText(TEXT_CONSTANTS.textToSearch);
+        await expect(await searchResultPage.currencyOfFirstSuggestion).toContainText(TEXT_CONSTANTS.newCurrencyValue);
     });
 
-    test('Should change location to ' + newCountryValue + '', async ({page}) => {
-        await homePage.navigate(targetUrl);
+    test('Should change location to ' + TEXT_CONSTANTS.newCountryValue + '', async ({page}) => {
+        await homePage.navigate(TEXT_CONSTANTS.targetUrl);
         await header.pressElement(await header.locationTextField);
-        await locationPopUp.changeDeliveryCountry(newCountryValue);
-        await expect(await header.locationTextField).toHaveText(newCountryValue);
+        await locationPopUp.changeDeliveryCountry(TEXT_CONSTANTS.newCountryValue);
+        await expect(await header.locationTextField).toHaveText(TEXT_CONSTANTS.newCountryValue);
     });
 
     test('Should search solution to problem in customer service', async ({page}) => {
-        await homePage.navigate(targetUrl);
+        await homePage.navigate(TEXT_CONSTANTS.targetUrl);
         await header.pressElement(await header.leftNavigationMenuToggle);
         await leftNavigationMenu.pressElement(await leftNavigationMenu.customerServiceLink);
-        await customerServicePage.searchByText(problemTextToSearch);
-        await expect(await customerServicePage.solutionTitle).toHaveText(problemTextToSearch);
+        await customerServicePage.searchByText(TEXT_CONSTANTS.problemTextToSearch);
+        await expect(await customerServicePage.solutionTitle).toHaveText(TEXT_CONSTANTS.problemTextToSearch);
     });
 
     test('Should add product to the cart', async ({page}) => {
-        await homePage.navigate(targetUrl);
+        await homePage.navigate(TEXT_CONSTANTS.targetUrl);
         await header.pressElement(await header.locationTextField);
-        await locationPopUp.changeDeliveryCountry(newCountryValue);
-        await header.searchByText(textToSearch);
+        await locationPopUp.changeDeliveryCountry(TEXT_CONSTANTS.newCountryValue);
+        await header.searchByText(TEXT_CONSTANTS.textToSearch);
         await searchResultPage.addProductToCart();
         await header.pressElement(await header.cartIcon);
-        await expect(await cartPage.subtotalCountOfCart).toHaveText(cartSubtotalTextAfterAdding);
+        await expect(await cartPage.subtotalCountOfCart).toHaveText(TEXT_CONSTANTS.cartSubtotalTextAfterAdding);
     });
 });
