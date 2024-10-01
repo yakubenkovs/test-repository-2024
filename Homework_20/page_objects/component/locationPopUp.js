@@ -6,7 +6,7 @@ class LocationPopUp extends Header {
   }
 
   get countryDropdownList() {
-    return this.page.locator('#GLUXCountryListDropdown');
+    return this.page.locator('#GLUXCountryList');
   }
 
   get doneButton() {
@@ -15,8 +15,7 @@ class LocationPopUp extends Header {
 
   async changeDeliveryCountry(newCountryValue) {
     await this.countryDropdownList.waitFor({state: 'visible'});
-    await this.pressElement(await this.countryDropdownList);
-    await this.pressElement(await this.page.locator('//a[contains(text(), "' + newCountryValue + '")]'));
+    await this.countryDropdownList.selectOption(newCountryValue);
     await this.pressElement(await this.doneButton);
     await this.countryDropdownList.waitFor({state: 'detached'});
   }
